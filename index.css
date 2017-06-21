@@ -6,6 +6,10 @@
 .text {
     width: 33%;
     margin: 0 auto;
-    border: 1px solid #ccc;
     padding: 5%;
+}
+
+.text p {
+    border: 1px solid #ccc;
+    width: 100%;
 }

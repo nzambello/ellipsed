@@ -1,0 +1,14 @@
+{
+  "name": "ellipsed",
+  "version": "0.0.0",
+  "description": "Javascirpt library for multilined text ellipsis",
+  "main": "index.html",
+  "dependencies": {
+    "serve": "^5.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve -s . -p 3000"
+  }
+}
