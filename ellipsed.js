@@ -23,16 +23,15 @@ const ellipsed = (selector, rows) => {
       rowsWrapped++;
 
       if (rowsWrapped === rows + 1) {
-        textBeforeWrap = textBeforeWrap.concat('...');
+        el.innerHTML = textBeforeWrap.concat('...');
         break;
       }
     }
 
-    beforeWrappedToken = token;
     textBeforeWrap = textBeforeWrap.length
-                     ? textBeforeWrap.concat(' ').concat(beforeWrappedToken)
-                     : textBeforeWrap.concat(beforeWrappedToken);
+                     ? textBeforeWrap.concat(' ').concat(token)
+                     : textBeforeWrap.concat(token);
   }
 
-  el.innerHTML = textBeforeWrap;
+  // el.innerHTML = textBeforeWrap;
 };
