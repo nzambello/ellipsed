@@ -5,11 +5,10 @@
 
 .text {
     width: 33%;
-    margin: 0 auto;
-    padding: 5%;
+    margin: 50px auto;
 }
 
 .text p {
     border: 1px solid #ccc;
-    width: 100%;
+    padding: 5px;
 }
