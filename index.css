@@ -1,0 +1,11 @@
+.container {
+    max-width: 1024px;
+    padding: 0 15px;
+}
+
+.text {
+    width: 33%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 5%;
+}
