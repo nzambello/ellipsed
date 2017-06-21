@@ -1,24 +1,22 @@
 * {
     font-family: 'Arial', sans-serif;
 }
-}
+
 .container {
     max-width: 1024px;
-    padding: 0 15px;
+    padding: 15px;
+    margin: 0 auto;
+    overflow: auto;
 }
 
 h1 {
     text-align: center;
 }
 
-.text {
-    width: 50%;
-    margin: auto;
-}
-
 .text p {
     border: 1px solid #ccc;
-    padding: 5px;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .tests {
