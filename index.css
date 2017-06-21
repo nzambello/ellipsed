@@ -1,14 +1,60 @@
+* {
+    font-family: 'Arial', sans-serif;
+}
+}
 .container {
     max-width: 1024px;
     padding: 0 15px;
 }
 
+h1 {
+    text-align: center;
+}
+
 .text {
-    width: 33%;
-    margin: 50px auto;
+    width: 50%;
+    margin: auto;
 }
 
 .text p {
     border: 1px solid #ccc;
     padding: 5px;
+}
+
+.tests {
+    margin: 50px auto;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.controls {
+    margin: 100px auto;
+    text-align: center;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.controls .btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #bbb;
+}
+
+.controls .btn:hover {
+    background: #e6e6e6;
+    border-color: #adadad;
+}
+
+.controls .btn:active {
+    background: #e6e6e6;
+    border-color: #666;
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    outline: none;
+}
+
+.controls .btn:focus {
+    outline: none;
 }

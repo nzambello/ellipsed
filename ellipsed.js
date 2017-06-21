@@ -1,37 +1,44 @@
 const ellipsed = (selector, rows) => {
-  let el = document.querySelector(selector);
-  let text = el.innerText;
+  let elements = document.querySelectorAll(selector);
 
-  let splittedText = text.split(' ');
-  let rowsWrapped = 0;
-  let beforeWrappedToken = '';
-  let textBeforeWrap = '';
+  for (let el of elements) {
+    if (rows) {
+      let splittedText = el.innerText.split(' ');
+      let rowsWrapped = 0;
+      let textBeforeWrap = '';
 
-  el.innerText = '';
-  let elHeight = window.getComputedStyle(el).height;
+      el.innerText = '';
+      let elHeight = window.getComputedStyle(el).height;
 
-  for (let token of splittedText) {
-    if (el.innerText.length) {
-      el.innerText = el.innerText.concat(' ').concat(token);
-    }
-    else {
-      el.innerText = el.innerText.concat(token);
-    }
+      for (let token of splittedText) {
+        if (el.innerText.length) {
+          el.innerText = el.innerText.concat(' ').concat(token).concat('...');
+        }
+        else {
+          el.innerText = el.innerText.concat(token).concat('...');
+        }
 
-    if (window.getComputedStyle(el).height > elHeight) {
-      elHeight = window.getComputedStyle(el).height;
-      rowsWrapped++;
+        if (parseFloat(window.getComputedStyle(el).height) > parseFloat(elHeight)) {
+          elHeight = window.getComputedStyle(el).height;
+          rowsWrapped++;
 
-      if (rowsWrapped === rows + 1) {
-        el.innerHTML = textBeforeWrap.concat('...');
-        break;
+          if (rowsWrapped === rows + 1) {
+            el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
+                           ? textBeforeWrap.concat('..')
+                           : textBeforeWrap.concat('...');
+
+            break;
+          }
+        }
+
+        textBeforeWrap = textBeforeWrap.length
+                         ? textBeforeWrap.concat(' ').concat(token)
+                         : textBeforeWrap.concat(token);
+        el.innerHTML = textBeforeWrap;
       }
     }
-
-    textBeforeWrap = textBeforeWrap.length
-                     ? textBeforeWrap.concat(' ').concat(token)
-                     : textBeforeWrap.concat(token);
+    else {
+      el.innerText = '';
+    }
   }
-
-  // el.innerHTML = textBeforeWrap;
 };
