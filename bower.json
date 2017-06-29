@@ -1,0 +1,26 @@
+{
+  "name": "ellipsed",
+  "description": "A JavaScript library for multilined text ellipsis",
+  "main": "ellipsis.js",
+  "authors": [
+    "nzambello <nicola.zambello@redturtle.it>"
+  ],
+  "license": "GPL",
+  "keywords": [
+    "ellipsis",
+    "multiline",
+    "text",
+    "javascript",
+    "library",
+    "line",
+    "ellipsed"
+  ],
+  "homepage": "https://github.com/nzambello/ellipsed",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
