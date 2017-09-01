@@ -12,3 +12,5 @@ Words those exceede that number of rows are trucated with `...` at the end.
 In the [example/](https://github.com/nzambello/ellipsed/tree/master/example) directory of this repo there is an example.
 You can start it with `npm start` (or with `yarn start`).  
 The main template is in the root directory with the library and other stuffs are in the example/ directory.
+
+You can also see the example here: https://nzambello.github.io/ellipsed/
