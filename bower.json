@@ -5,7 +5,7 @@
   "authors": [
     "nzambello <nicola.zambello@redturtle.it>"
   ],
-  "license": "GPL",
+  "license": "LGPL",
   "keywords": [
     "ellipsis",
     "multiline",
