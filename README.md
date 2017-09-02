@@ -14,3 +14,6 @@ You can start it with `npm start` (or with `yarn start`).
 The main template is in the root directory with the library and other stuffs are in the example/ directory.
 
 You can also see the example here: https://nzambello.github.io/ellipsed/
+
+## Contributing
+New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other infos.
