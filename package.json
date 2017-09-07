@@ -3,12 +3,16 @@
   "version": "0.2.0",
   "description": "A JavaScript library for multilined text ellipsis",
   "main": "ellipsis.js",
-  "dependencies": {
-    "serve": "^5.2.3"
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.6.1",
+    "serve": "^6.0.6"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve -s . -p 3000"
+    "build": "babel src -d lib",
+    "watch": "babel src -d lib --watch",
+    "start": "serve . -p 3000"
   }
 }
