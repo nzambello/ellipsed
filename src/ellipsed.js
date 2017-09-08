@@ -30,9 +30,9 @@ function ellipsed(selector = '', rows = 1) {
 
     for (const token of splittedText) {
       if (el.textContent.length) {
-        el.textContent = el.textContent.concat(' ').concat(token).concat('...');
+        el.textContent = `${el.textContent} ${token}...`;
       } else {
-        el.textContent = el.textContent.concat(token).concat('...');
+        el.textContent = `${el.textContent}${token}...`;
       }
 
       if (parseFloat(window.getComputedStyle(el).height) > parseFloat(elHeight)) {
@@ -41,16 +41,16 @@ function ellipsed(selector = '', rows = 1) {
 
         if (rowsWrapped === rows + 1) {
           el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
-            ? textBeforeWrap.concat('..')
-            : textBeforeWrap.concat('...');
+            ? `${textBeforeWrap}..`
+            : `${textBeforeWrap}...`;
 
           break;
         }
       }
 
       textBeforeWrap = textBeforeWrap.length
-        ? textBeforeWrap.concat(' ').concat(token)
-        : textBeforeWrap.concat(token);
+        ? `${textBeforeWrap} ${token}`
+        : `${textBeforeWrap}${token}`;
       el.textContent = textBeforeWrap;
     }
   }
