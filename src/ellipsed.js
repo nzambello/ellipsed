@@ -26,7 +26,8 @@ function ellipsed(selector = '', rows = 1) {
     let textBeforeWrap = '';
 
     el.textContent = '';
-    let elHeight = window.getComputedStyle(el).height;
+    const elStyle = window.getComputedStyle(el);
+    let elHeight = elStyle.height;
 
     for (const token of splittedText) {
       if (el.textContent.length) {
@@ -35,8 +36,8 @@ function ellipsed(selector = '', rows = 1) {
         el.textContent = `${el.textContent}${token}...`;
       }
 
-      if (parseFloat(window.getComputedStyle(el).height) > parseFloat(elHeight)) {
-        elHeight = window.getComputedStyle(el).height;
+      if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
+        elHeight = elStyle.height;
         rowsWrapped++;
 
         if (rowsWrapped === rows + 1) {
