@@ -2,7 +2,13 @@
   "name": "ellipsed",
   "version": "0.2.0",
   "description": "A JavaScript library for multilined text ellipsis",
-  "main": "ellipsis.js",
+  "licence": "LGPL-3.0",
+  "homepage": "https://github.com/nzambello/ellipsed",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/nzambello/ellipsed"
+  },
+  "main": "lib/ellipsed.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -10,7 +16,6 @@
     "serve": "^6.0.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d lib",
     "watch": "babel src -d lib --watch",
     "start": "serve . -p 3000"
