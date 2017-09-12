@@ -56,3 +56,5 @@ function ellipsed(selector = '', rows = 1) {
     }
   }
 }
+
+export default ellipsed;
