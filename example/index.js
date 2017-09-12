@@ -1,3 +1,5 @@
+const ellipsed = window.ellipsed.default;
+
 const reset = () => {
   let aaa = document.querySelectorAll('.text p')[0];
 
