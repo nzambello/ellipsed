@@ -1,12 +1,12 @@
 {
   "name": "ellipsed",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A JavaScript library for multilined text ellipsis",
   "licence": "LGPL-3.0",
   "homepage": "https://github.com/nzambello/ellipsed",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/nzambello/ellipsed"
+    "type": "git",
+    "url": "https://github.com/nzambello/ellipsed"
   },
   "main": "lib/ellipsed.js",
   "devDependencies": {
