@@ -34,25 +34,45 @@ h1 {
     box-sizing: border-box;
 }
 
-.controls .btn {
+.btn {
     padding: 10px 15px;
     border-radius: 5px;
     background: #fff;
     border: 1px solid #bbb;
 }
 
-.controls .btn:hover {
+.btn:hover {
     background: #e6e6e6;
     border-color: #adadad;
 }
 
-.controls .btn:active {
+.btn:active {
     background: #e6e6e6;
     border-color: #666;
     box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
     outline: none;
 }
 
-.controls .btn:focus {
+.btn:focus {
     outline: none;
+}
+
+.view-on-github {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.view-on-github a,
+.view-on-github a:visited,
+.view-on-github a:link {
+    text-decoration: none;
+    color: #000;
+}
+
+.view-on-github a img {
+    max-height: 20px;
+    width: auto;
+    position: relative;
+    top: 4px;
+    left: -2px;
 }
