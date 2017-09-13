@@ -1,6 +1,5 @@
 # ellipsed
 [![npm version](https://badge.fury.io/js/ellipsed.svg)](https://badge.fury.io/js/ellipsed)
-[![Bower version](https://badge.fury.io/bo/ellipsed.svg)](https://badge.fury.io/bo/ellipsed)
 [![license](https://img.shields.io/github/license/nzambello/ellipsed.svg)]()&nbsp;&nbsp;
 [![GitHub forks](https://img.shields.io/github/forks/nzambello/ellipsed.svg?style=social&label=Fork)]()
 [![GitHub stars](https://img.shields.io/github/stars/nzambello/ellipsed.svg?style=social&label=Star)]()  
