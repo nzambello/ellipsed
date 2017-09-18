@@ -11,6 +11,7 @@
   "main": "lib/ellipsed.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "eslint": "^4.6.1",
     "serve": "^6.0.6"
