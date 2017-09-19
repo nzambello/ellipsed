@@ -1,4 +1,4 @@
-* {
+body {
     font-family: 'Arial', sans-serif;
 }
 
@@ -39,6 +39,7 @@ h1 {
     border-radius: 5px;
     background: #fff;
     border: 1px solid #bbb;
+    cursor: pointer;
 }
 
 .btn:hover {
