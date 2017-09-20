@@ -9,26 +9,27 @@
  */
 
 function tokensReducer(acc, token) {
-  const { el, elStyle, rowsLimit, rowsWrapped } = acc;
+  const { el, elStyle, elHeight, rowsLimit, rowsWrapped } = acc;
   if (rowsWrapped === rowsLimit + 1) {
     return { ...acc };
   }
   const textBeforeWrap = el.textContent;
-  const elHeight = elStyle.height;
   let newRowsWrapped = rowsWrapped;
+  let newHeight = elHeight;
   el.textContent = el.textContent.length
     ? `${el.textContent} ${token}...`
     : `${token}...`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
     newRowsWrapped++;
+    newHeight = elStyle.height;
 
     if (newRowsWrapped === rowsLimit + 1) {
-      el.textContent = textBeforeWrap[textBeforeWrap.length - 1] === '.'
+      el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
         ? `${textBeforeWrap}..`
         : `${textBeforeWrap}...`;
-      
-      return { ...acc, rowsWrapped: newRowsWrapped };
+
+      return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
     }
   }
 
@@ -36,55 +37,29 @@ function tokensReducer(acc, token) {
     ? `${textBeforeWrap} ${token}`
     : `${token}`;
 
-  return { ...acc, rowsWrapped: newRowsWrapped };
+  return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
 }
 
 function ellipsis(selector = '', rows = 1) {
   const elements = document.querySelectorAll(selector);
 
-  for (const el of elements) {
+  for(let i = 0; i < elements.length; ++i) {
+    const el = elements[i];
     const splittedText = el.textContent.split(' ');
-    // let rowsWrapped = 0;
-    // let textBeforeWrap = '';
 
     el.textContent = '';
     const elStyle = window.getComputedStyle(el);
-    // let elHeight = elStyle.height;
 
     splittedText.reduce(
       tokensReducer,
       {
         el,
         elStyle,
+        elHeight: 0,
         rowsLimit: rows,
         rowsWrapped: 0,
       }
     );
-    /* for (const token of splittedText) {
-      if (el.textContent.length) {
-        el.textContent = `${el.textContent} ${token}...`;
-      } else {
-        el.textContent = `${token}...`;
-      }
-
-      if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
-        elHeight = elStyle.height;
-        rowsWrapped++;
-
-        if (rowsWrapped === rows + 1) {
-          el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
-            ? `${textBeforeWrap}..`
-            : `${textBeforeWrap}...`;
-
-          break;
-        }
-      }
-
-      textBeforeWrap = textBeforeWrap.length
-        ? `${textBeforeWrap} ${token}`
-        : `${token}`;
-      el.textContent = textBeforeWrap;
-    } */
   }
 }
 
