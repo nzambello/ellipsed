@@ -16,7 +16,7 @@ It provides a function that is defined as:
 `ellipsed(selector, rows);`
 
 *selector* is a CSS selector string and *rows* is the number of rows should be visible.
-Words those exceede that number of rows are trucated with `...` at the end.  
+Words that exceede the number of `rows` are trucated with `...` at the end.  
 
 ## Install
 Ellipsed is published via npm, so you can install it with:
