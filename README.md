@@ -6,37 +6,60 @@
 [![npm](https://img.shields.io/npm/dt/ellipsed.svg)](https://www.npmjs.com/package/ellipsed)
 [![npm](https://img.shields.io/npm/dw/ellipsed.svg)](https://www.npmjs.com/package/ellipsed) &nbsp;
 [![Demo](https://img.shields.io/badge/Demo-here-yellowgreen.svg)](https://nzambello.github.io/ellipsed/)  
-  
-  
-A JavaScript library for multilined ellipsis  
-  
-  
-### Usage
-It provides a function that is defined as:
-`ellipsed(selector, rows);`
 
-*selector* is a CSS selector string and *rows* is the number of rows should be visible.
-Words those exceede that number of rows are trucated with `...` at the end.  
+
+A JavaScript library for multilined ellipsis.
+
+## Demo  
+You can see the example here: https://nzambello.github.io/ellipsed/
+
+The [example/](https://github.com/nzambello/ellipsed/tree/master/example) directory of this repo contains the demo showed above.
+To start it on your local machine, clone the repository and install it by following the installation instructions below, then start it with `npm start` (or with `yarn start`).  
 
 ## Install
 Ellipsed is published via npm, so you can install it with:
-```
+```shell
 yarn add ellipsed
 ```
-or, if using npm: ``` npm install ellipsed ```  
+or, if using npm:
+```shell
+npm install --save ellipsed
+```
   
 It's published also via bower:
-```
+```shell
 bower install ellipsed
 ```
-  
-  
-## Demo  
-In the [example/](https://github.com/nzambello/ellipsed/tree/master/example) directory of this repo there is an example.
-You can start it with `npm start` (or with `yarn start`).  
-The main template is in the root directory with the library and other stuffs are in the example/ directory.
 
-You can also see the example here: https://nzambello.github.io/ellipsed/
+## Usage
+Ellipsed provides a function that is used like this:
+`ellipsis(selector, rows);`
+
+`selector` is a CSS selector string and `rows` is the number of rows that should be visible.
+Words that exceed the specified number of rows are truncated with `...` at the end.  
+
+Ellipsed is provided as a UMD module.
+
+You can use it as a ES6 module:
+```javascript
+import { ellipsis } from 'ellipsed';
+```
+As a CommonJS module:
+```javascript
+var { ellipsis } = require('ellipsed');
+```
+As an AMD module:
+```javascript
+require([
+  'ellipsed'
+], function(ellipsed) {
+  var ellipsis = ellipsed.ellipsis;
+});
+```
+Or as a global module in the browser:
+```javascript
+var ellipsis = window.ellipsed.ellipsis;
+```
 
 ## Contributing &nbsp; [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/nzambello/ellipsed/issues)
 New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other infos.
