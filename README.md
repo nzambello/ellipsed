@@ -1,4 +1,6 @@
 # ellipsed
+
+[![Join the chat at https://gitter.im/ellipsed/Lobby](https://badges.gitter.im/ellipsed/Lobby.svg)](https://gitter.im/ellipsed/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![license](https://img.shields.io/github/license/nzambello/ellipsed.svg)](https://github.com/nzambello/ellipsed/blob/master/LICENSE)&nbsp;&nbsp;
 [![GitHub forks](https://img.shields.io/github/forks/nzambello/ellipsed.svg?style=social&label=Fork)](https://github.com/nzambello/ellipsed)
 [![GitHub stars](https://img.shields.io/github/stars/nzambello/ellipsed.svg?style=social&label=Star)](https://github.com/nzambello/ellipsed)  
