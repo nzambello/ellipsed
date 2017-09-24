@@ -12,7 +12,7 @@ function reset() {
 
 function uno() {
   reset();
-  ellipsis('.text p', 1);
+  ellipsis('.text p', 1, { replaceStr: "---" });
 }
 
 function due() {
