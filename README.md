@@ -32,7 +32,7 @@ bower install ellipsed
 ```
 
 ## Usage
-Call the ellipsis method with three parameters `selector`, `Ellipsed provides a function that is used like this:
+Call the ellipsis method with three parameters:
 ````javascript
 ellipsis(selector, rows, options);
 ````
