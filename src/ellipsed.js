@@ -41,13 +41,13 @@ function tokensReducer(acc, token) {
 }
 
 function ellipsis(selector = '', rows = 1, options) {
-    // Setup default options
-    let opts = {
-        replaceStr : "..."
-    };
+  // Setup default options
+  let opts = {
+    replaceStr : "..."
+  };
 
-    // Override options with any new values if defined
-    opts = Object.assign(opts, options);
+  // Override options with any new values if defined
+  opts = Object.assign(opts, options);
 
   const elements = document.querySelectorAll(selector);
 
