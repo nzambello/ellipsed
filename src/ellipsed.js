@@ -17,7 +17,7 @@ function tokensReducer(acc, token) {
   let newRowsWrapped = rowsWrapped;
   let newHeight = elHeight;
   el.textContent = el.textContent.length
-    ? `${el.textContent} ${token}${options.replaceStr}`
+    ? `${el.textContent} ${token}...`
     : `${token}${options.replaceStr}`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
@@ -26,8 +26,8 @@ function tokensReducer(acc, token) {
 
     if (newRowsWrapped === rowsLimit + 1) {
       el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
-        ? `${textBeforeWrap}..`
-        : `${textBeforeWrap}...`;
+        ? `${textBeforeWrap}${options.replaceStr}`
+        : `${textBeforeWrap}${options.replaceStr}`;
 
       return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
     }
@@ -47,7 +47,7 @@ function ellipsis(selector = '', rows = 1, options) {
   };
 
   // Override options with any new values if defined
-  opts = Object.assign(opts, options);
+  opts = { ...opts, ...options };
 
   const elements = document.querySelectorAll(selector);
 
