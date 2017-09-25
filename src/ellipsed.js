@@ -26,8 +26,8 @@ function tokensReducer(acc, token) {
 
     if (newRowsWrapped === rowsLimit + 1) {
       el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
-        ? `${textBeforeWrap}${options.replaceStr}`
-        : `${textBeforeWrap}${options.replaceStr}`;
+        ? `${textBeforeWrap}..`
+        : `${textBeforeWrap}...`;
 
       return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
     }
