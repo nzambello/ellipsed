@@ -34,6 +34,10 @@ h1 {
     box-sizing: border-box;
 }
 
+.controls h3 {
+  margin-top: 30px
+}
+
 .btn {
     padding: 10px 15px;
     border-radius: 5px;

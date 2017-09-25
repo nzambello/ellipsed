@@ -12,7 +12,7 @@ function reset() {
 
 function uno() {
   reset();
-  ellipsis('.text p', 1, { replaceStr: "---" });
+  ellipsis('.text p', 1);
 }
 
 function due() {
@@ -33,4 +33,9 @@ function quattro() {
 function cinque() {
   reset();
   ellipsis('.text p', 5);
+}
+
+function unoDifferentReplacementStr() {
+    reset();
+    ellipsis('.text p', 1, { replaceStr: "---" });
 }
