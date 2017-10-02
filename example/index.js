@@ -34,8 +34,3 @@ function cinque() {
   reset();
   ellipsis('.text p', 5);
 }
-
-function unoDifferentReplacementStr() {
-    reset();
-    ellipsis('.text p', 1, { replaceStr: "---" });
-}
