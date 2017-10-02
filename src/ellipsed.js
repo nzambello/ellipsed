@@ -17,7 +17,7 @@ function tokensReducer(acc, token) {
   let newRowsWrapped = rowsWrapped;
   let newHeight = elHeight;
   el.textContent = el.textContent.length
-    ? `${el.textContent} ${token}...`
+    ? `${el.textContent} ${token}${options.replaceStr}`
     : `${token}${options.replaceStr}`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
@@ -26,7 +26,7 @@ function tokensReducer(acc, token) {
 
     if (newRowsWrapped === rowsLimit + 1) {
       el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
-        ? `${textBeforeWrap}${options.replaceStr}`
+        ? `${textBeforeWrap}..`
         : `${textBeforeWrap}${options.replaceStr}`;
 
       return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
