@@ -25,7 +25,7 @@ function tokensReducer(acc, token) {
     newHeight = elStyle.height;
 
     if (newRowsWrapped === rowsLimit + 1) {
-      el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
+      el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.' && options.replaceStr === '...'
         ? `${textBeforeWrap}..`
         : `${textBeforeWrap}${options.replaceStr}`;
 
@@ -41,13 +41,11 @@ function tokensReducer(acc, token) {
 }
 
 function ellipsis(selector = '', rows = 1, options) {
-  // Setup default options
-  let opts = {
-    replaceStr : "..."
+  let defaultOptions = {
+    replaceStr : '...',
   };
 
-  // Override options with any new values if defined
-  opts = { ...opts, ...options };
+  let opts = { ...defaultOptions, ...options };
 
   const elements = document.querySelectorAll(selector);
 
