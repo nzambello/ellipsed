@@ -9,7 +9,7 @@
  */
 
 function tokensReducer(acc, token) {
-  const { el, elStyle, elHeight, rowsLimit, rowsWrapped } = acc;
+  const { el, elStyle, elHeight, rowsLimit, rowsWrapped, options } = acc;
   if (rowsWrapped === rowsLimit + 1) {
     return { ...acc };
   }
@@ -17,8 +17,8 @@ function tokensReducer(acc, token) {
   let newRowsWrapped = rowsWrapped;
   let newHeight = elHeight;
   el.textContent = el.textContent.length
-    ? `${el.textContent} ${token}...`
-    : `${token}...`;
+    ? `${el.textContent} ${token}${options.replaceStr}`
+    : `${token}${options.replaceStr}`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
     newRowsWrapped++;
@@ -27,7 +27,7 @@ function tokensReducer(acc, token) {
     if (newRowsWrapped === rowsLimit + 1) {
       el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
         ? `${textBeforeWrap}..`
-        : `${textBeforeWrap}...`;
+        : `${textBeforeWrap}${options.replaceStr}`;
 
       return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
     }
@@ -40,7 +40,15 @@ function tokensReducer(acc, token) {
   return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
 }
 
-function ellipsis(selector = '', rows = 1) {
+function ellipsis(selector = '', rows = 1, options) {
+  // Setup default options
+  let opts = {
+    replaceStr : "..."
+  };
+
+  // Override options with any new values if defined
+  opts = { ...opts, ...options };
+
   const elements = document.querySelectorAll(selector);
 
   for(let i = 0; i < elements.length; ++i) {
@@ -58,6 +66,7 @@ function ellipsis(selector = '', rows = 1) {
         elHeight: 0,
         rowsLimit: rows,
         rowsWrapped: 0,
+        options: opts
       }
     );
   }

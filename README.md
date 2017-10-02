@@ -32,16 +32,21 @@ bower install ellipsed
 ```
 
 ## Usage
-Ellipsed provides a function that is used like this:
+Call the ellipsis method with three parameters:
 ````javascript
-ellipsis(selector, rows);
+ellipsis(selector, rows, options);
 ````
 
-### Settings
-Option | Type |  Description
------- | ---- |  -----------
-selector | string | CSS selector used to target the element
-rows | int | Number of rows that should be visible, following words will be trucated with ...
+- `selector` - A CSS selector string used to target the element for truncation
+- `rows` - An integer value used as the number of rows that should be visible, following words will be trucated with the `replaceStr` (default is `'...'`).
+- `options` - Allows an options object to be passed to further customise the functionality. See options section below for details.
+
+### Options
+Options can be passed through the method using the third parameter, which provides greater control.
+
+Name | Type |  Default | Description
+---- | ---- |  ------- | -----------
+replaceStr | string | `'...'` | The string that substituted following the trucated string.
 
 ### Import
 Ellipsed is provided as a UMD module.
