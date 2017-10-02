@@ -58,6 +58,17 @@ h1 {
     outline: none;
 }
 
+.replace-str {
+    padding: 15px 0;
+}
+
+.replace-str-input {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #bbb;
+}
+
 .view-on-github {
     text-align: center;
     margin-top: 50px;
