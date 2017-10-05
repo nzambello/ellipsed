@@ -14,27 +14,31 @@ function getReplaceStr() {
   return document.querySelector('.replace-str-input').value;
 }
 
+function getResponsive() {
+  return document.querySelector('input.responsive-input').checked;
+}
+
 function oneRow() {
   reset();
-  ellipsis('.text p', 1, { replaceStr: getReplaceStr() });
+  ellipsis('.text p', 1, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function twoRows() {
   reset();
-  ellipsis('.text p', 2, { replaceStr: getReplaceStr() });
+  ellipsis('.text p', 2, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function threeRows() {
   reset();
-  ellipsis('.text p', 3, { replaceStr: getReplaceStr() });
+  ellipsis('.text p', 3, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function fourRows() {
   reset();
-  ellipsis('.text p', 4, { replaceStr: getReplaceStr() });
+  ellipsis('.text p', 4, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function fiveRows() {
   reset();
-  ellipsis('.text p', 5, { replaceStr: getReplaceStr() });
+  ellipsis('.text p', 5, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
