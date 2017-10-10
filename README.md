@@ -47,6 +47,7 @@ Options can be passed through the method using the third parameter, which provid
 Name | Type |  Default | Description
 ---- | ---- |  ------- | -----------
 replaceStr | string | `'...'` | The string that substituted following the trucated string.
+responsive | boolean | `false` | If true, the method is re-called on resize event, so the number of rows is preserved.
 
 ### Import
 Ellipsed is provided as a UMD module.

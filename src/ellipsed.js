@@ -43,14 +43,17 @@ function tokensReducer(acc, token) {
 function ellipsis(selector = '', rows = 1, options) {
   let defaultOptions = {
     replaceStr : '...',
+    responsive: false,
   };
 
   let opts = { ...defaultOptions, ...options };
 
   const elements = document.querySelectorAll(selector);
+  const originalTexts = [];
 
-  for(let i = 0; i < elements.length; ++i) {
+  for (let i = 0; i < elements.length; i++) {
     const el = elements[i];
+    originalTexts[i] = el.textContent;
     const splittedText = el.textContent.split(' ');
 
     el.textContent = '';
@@ -68,6 +71,15 @@ function ellipsis(selector = '', rows = 1, options) {
       }
     );
   }
+
+  window.onresize = () => {
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      el.textContent = originalTexts[i];
+    }
+
+    ellipsis(selector, rows, options);
+  };
 }
 
 export { ellipsis };
