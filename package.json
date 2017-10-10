@@ -20,6 +20,7 @@
   "scripts": {
     "build": "babel src -d lib",
     "watch": "babel src -d lib --watch",
-    "start": "serve . -p 3000"
+    "start": "serve . -p 3000",
+    "prettier-all": "prettier --write '**/*.js{,on}'"
   }
 }
