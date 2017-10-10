@@ -1,90 +1,90 @@
 body {
-    font-family: 'Arial', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 .container {
-    max-width: 1024px;
-    padding: 15px;
-    margin: 0 auto;
-    overflow: auto;
+  max-width: 1024px;
+  padding: 15px;
+  margin: 0 auto;
+  overflow: auto;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .text p {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .tests {
-    margin: 50px auto;
-    float: left;
-    width: 50%;
-    box-sizing: border-box;
+  margin: 50px auto;
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
 }
 
 .controls {
-    margin: 100px auto;
-    text-align: center;
-    float: left;
-    width: 50%;
-    box-sizing: border-box;
+  margin: 100px auto;
+  text-align: center;
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
 }
 
 .btn {
-    padding: 10px 15px;
-    border-radius: 5px;
-    background: #fff;
-    border: 1px solid #bbb;
-    cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #bbb;
+  cursor: pointer;
 }
 
 .btn:hover {
-    background: #e6e6e6;
-    border-color: #adadad;
+  background: #e6e6e6;
+  border-color: #adadad;
 }
 
 .btn:active {
-    background: #e6e6e6;
-    border-color: #666;
-    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-    outline: none;
+  background: #e6e6e6;
+  border-color: #666;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  outline: none;
 }
 
 .btn:focus {
-    outline: none;
+  outline: none;
 }
 
 .replace-str {
-    padding: 15px 0;
+  padding: 15px 0;
 }
 
 .replace-str-input {
-    padding: 10px 15px;
-    border-radius: 5px;
-    background: #fff;
-    border: 1px solid #bbb;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #bbb;
 }
 
 .view-on-github {
-    text-align: center;
-    margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .view-on-github a,
 .view-on-github a:visited,
 .view-on-github a:link {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
+  color: #000;
 }
 
 .view-on-github a img {
-    max-height: 20px;
-    width: auto;
-    position: relative;
-    top: 4px;
-    left: -2px;
+  max-height: 20px;
+  width: auto;
+  position: relative;
+  top: 4px;
+  left: -2px;
 }

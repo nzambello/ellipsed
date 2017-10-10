@@ -25,24 +25,23 @@ function tokensReducer(acc, token) {
     newHeight = elStyle.height;
 
     if (newRowsWrapped === rowsLimit + 1) {
-      el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.' && options.replaceStr === '...'
-        ? `${textBeforeWrap}..`
-        : `${textBeforeWrap}${options.replaceStr}`;
+      el.innerHTML =
+        textBeforeWrap[textBeforeWrap.length - 1] === '.' && options.replaceStr === '...'
+          ? `${textBeforeWrap}..`
+          : `${textBeforeWrap}${options.replaceStr}`;
 
       return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
     }
   }
 
-  el.textContent = textBeforeWrap.length
-    ? `${textBeforeWrap} ${token}`
-    : `${token}`;
+  el.textContent = textBeforeWrap.length ? `${textBeforeWrap} ${token}` : `${token}`;
 
   return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
 }
 
 function ellipsis(selector = '', rows = 1, options) {
   let defaultOptions = {
-    replaceStr : '...',
+    replaceStr: '...',
     responsive: false,
   };
 
@@ -59,17 +58,14 @@ function ellipsis(selector = '', rows = 1, options) {
     el.textContent = '';
     const elStyle = window.getComputedStyle(el);
 
-    splittedText.reduce(
-      tokensReducer,
-      {
-        el,
-        elStyle,
-        elHeight: 0,
-        rowsLimit: rows,
-        rowsWrapped: 0,
-        options: opts
-      }
-    );
+    splittedText.reduce(tokensReducer, {
+      el,
+      elStyle,
+      elHeight: 0,
+      rowsLimit: rows,
+      rowsWrapped: 0,
+      options: opts,
+    });
   }
 
   window.onresize = () => {
