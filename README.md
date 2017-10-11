@@ -14,7 +14,8 @@
 [![Demo](https://img.shields.io/badge/Demo-here-yellowgreen.svg)](https://nzambello.github.io/ellipsed/) 
 
 ## What is Ellipsed?
-Ellipsed is a JavaScript plugin for generating multi-lined ellipsed text. It provides the ability to specify the number of lines visible.
+Ellipsed is a JavaScript library for generating multi-lined ellipsed text.  
+Indicating the number of visible lines, it will truncate the text at the correct position in targeted elements.
 
 ## Demo  
 You can see the example here: https://nzambello.github.io/ellipsed/
