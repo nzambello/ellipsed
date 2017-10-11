@@ -77,10 +77,6 @@ Or as a global module in the browser:
 var ellipsis = window.ellipsed.ellipsis;
 ```
 
-## Contributing
-New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other information.
-
-
 ## Browser support
 The library has been tested on:
 
@@ -89,3 +85,6 @@ The library has been tested on:
 - Safari 10+
 - Edge 14+
 - IE 11
+ 
+## Contributing
+New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other information.
