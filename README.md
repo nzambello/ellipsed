@@ -84,8 +84,8 @@ New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.co
 ## Browser support
 The library has been tested on:
 
-- Google Chrome (last two versions)
-- Firefox (last two versions)
-- Safari (last two versions)
-- Edge (last two versions)
+- Google Chrome 60+
+- Firefox 55+
+- Safari 10+
+- Edge 14+
 - IE 11
