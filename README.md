@@ -16,9 +16,11 @@
 ## What is Ellipsed?
 Ellipsed is a JavaScript library for generating multi-lined ellipsed text.  
 Indicating the number of visible lines, it will truncate the text at the correct position in targeted elements.
+  
+![Example screenshot](https://github.com/nzambello/ellipsed/tree/master/example/ellipsed.png)
 
 ## Demo  
-You can see the example here: https://nzambello.github.io/ellipsed/
+You can see the demo here: https://nzambello.github.io/ellipsed/
 
 The [example/](https://github.com/nzambello/ellipsed/tree/master/example) directory of this repo contains the demo showed above.
 To start it on your local machine, clone the repository and install it by following the installation instructions below, then start it with `npm start` (or with `yarn start`).  
