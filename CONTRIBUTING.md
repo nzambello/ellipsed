@@ -20,3 +20,5 @@ To have a unique code style across the whole library, even if it's a tiny one, t
 - Avoid useless comments (use them only if strictly needed)
 - We use `yarn` instead of `npm`
 - We use semantic versioning for releases (see http://semver.org/)
+  
+We have configured `prettier` to achive that consistency, and it's a precommit hook.
