@@ -85,7 +85,7 @@ The library has been tested on:
 - Firefox 55+
 - Safari 10+
 - Edge 14+
-- IE 11
+- IE 9+
  
 ## Contributing
 New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other information.
