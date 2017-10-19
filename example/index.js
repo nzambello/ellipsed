@@ -23,29 +23,29 @@ function getResponsive() {
 function oneRow() {
   reset();
   ellipsis('.text p.aaa', 1, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 2, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsis('.text p.lorem-ipsum', 1, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function twoRows() {
   reset();
   ellipsis('.text p.aaa', 2, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 3, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsis('.text p.lorem-ipsum', 2, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function threeRows() {
   reset();
   ellipsis('.text p.aaa', 3, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 4, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsis('.text p.lorem-ipsum', 3, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function fourRows() {
   reset();
   ellipsis('.text p.aaa', 4, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 5, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsis('.text p.lorem-ipsum', 4, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
 
 function fiveRows() {
   reset();
   ellipsis('.text p.aaa', 5, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 6, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsis('.text p.lorem-ipsum', 5, { replaceStr: getReplaceStr(), responsive: getResponsive() });
 }
