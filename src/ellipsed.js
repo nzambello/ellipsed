@@ -85,11 +85,6 @@ function ellipsis(selector = '', rows = 1, options) {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resizeHandler, opts.debounceDelay);
     });
-
-    window.addEventListener('orientationchange', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resizeHandler, opts.debounceDelay);
-    });
   }
 }
 
