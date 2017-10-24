@@ -43,6 +43,7 @@ function ellipsis(selector = '', rows = 1, options) {
   let defaultOptions = {
     replaceStr: '...',
     responsive: false,
+    debounceDelay: 250,
   };
 
   let opts = { ...defaultOptions, ...options };
@@ -68,14 +69,23 @@ function ellipsis(selector = '', rows = 1, options) {
     });
   }
 
-  window.onresize = () => {
-    for (let i = 0; i < elements.length; i++) {
-      const el = elements[i];
-      el.textContent = originalTexts[i];
-    }
+  if (opts.responsive) {
+    let resizeTimeout = false;
 
-    ellipsis(selector, rows, options);
-  };
+    const resizeHandler = () => {
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        el.textContent = originalTexts[i];
+      }
+
+      ellipsis(selector, rows, options);
+    };
+
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resizeHandler, opts.debounceDelay);
+    });
+  }
 }
 
 export { ellipsis };
