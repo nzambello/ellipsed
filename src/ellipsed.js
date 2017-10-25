@@ -78,7 +78,7 @@ function ellipsis(selector = '', rows = 1, options) {
         el.textContent = originalTexts[i];
       }
 
-      ellipsis(selector, rows, options);
+      ellipsis(selector, rows, { ...options, responsive: false });
     };
 
     window.addEventListener('resize', () => {
