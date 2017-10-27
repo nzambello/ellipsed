@@ -22,9 +22,12 @@ function getResponsive() {
 
 function ellipsize(rows) {
   reset();
-  ellipsis('.text p.aaa', rows, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', rows, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  didEllipsize = true;
+  var responsive = getResponsive();
+  ellipsis('.text p.aaa', rows, { replaceStr: getReplaceStr(), responsive: responsive });
+  ellipsis('.text p.lorem-ipsum', rows, { replaceStr: getReplaceStr(), responsive: responsive });
+  if (responsive) {
+    didEllipsize = true;
+  }
 }
 
 function oneRow() {
