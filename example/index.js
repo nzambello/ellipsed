@@ -1,9 +1,9 @@
 var ellipsis = window.ellipsed.ellipsis;
 
 function reset() {
-  var aaa = document.querySelectorAll('.text p')[0];
-
-  var loremIpsum = document.querySelectorAll('.text p')[1];
+  var elements = document.querySelectorAll('.text p');
+  var aaa = elements[0];
+  var loremIpsum = elements[1];
 
   aaa.innerText =
     'A a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a';
@@ -17,35 +17,47 @@ function getReplaceStr() {
 }
 
 function getResponsive() {
-  return document.querySelector('input.responsive-input').checked;
+  return document.querySelector('input#responsive-input').checked;
+}
+
+function ellipsize(rows) {
+  reset();
+  var responsive = getResponsive();
+  ellipsis('.text p.aaa', rows, { replaceStr: getReplaceStr(), responsive: responsive });
+  ellipsis('.text p.lorem-ipsum', rows, { replaceStr: getReplaceStr(), responsive: responsive });
+  if (responsive) {
+    didEllipsize = true;
+  }
 }
 
 function oneRow() {
-  reset();
-  ellipsis('.text p.aaa', 1, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 1, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsize(1);
 }
+document.getElementById('one-row').addEventListener('click', oneRow);
 
 function twoRows() {
-  reset();
-  ellipsis('.text p.aaa', 2, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 2, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsize(2);
 }
+document.getElementById('two-rows').addEventListener('click', twoRows);
 
 function threeRows() {
-  reset();
-  ellipsis('.text p.aaa', 3, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 3, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsize(3);
 }
+document.getElementById('three-rows').addEventListener('click', threeRows);
 
 function fourRows() {
-  reset();
-  ellipsis('.text p.aaa', 4, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 4, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsize(4);
 }
+document.getElementById('four-rows').addEventListener('click', fourRows);
 
 function fiveRows() {
-  reset();
-  ellipsis('.text p.aaa', 5, { replaceStr: getReplaceStr(), responsive: getResponsive() });
-  ellipsis('.text p.lorem-ipsum', 5, { replaceStr: getReplaceStr(), responsive: getResponsive() });
+  ellipsize(5);
 }
+document.getElementById('five-rows').addEventListener('click', fiveRows);
+
+var didEllipsize = false;
+
+function responsiveListener() {
+  didEllipsize && window.location.reload();
+}
+document.getElementById('responsive-input').addEventListener('change', responsiveListener);
