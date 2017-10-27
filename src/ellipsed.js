@@ -39,14 +39,14 @@ function tokensReducer(acc, token) {
   return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
 }
 
-function ellipsis(selector = '', rows = 1, options) {
-  let defaultOptions = {
+function ellipsis(selector = '', rows = 1, options = {}) {
+  const defaultOptions = {
     replaceStr: '...',
     responsive: false,
     debounceDelay: 250,
   };
 
-  let opts = { ...defaultOptions, ...options };
+  const opts = { ...defaultOptions, ...options };
 
   const elements = document.querySelectorAll(selector);
   const originalTexts = [];
@@ -74,8 +74,7 @@ function ellipsis(selector = '', rows = 1, options) {
 
     const resizeHandler = () => {
       for (let i = 0; i < elements.length; i++) {
-        const el = elements[i];
-        el.textContent = originalTexts[i];
+        elements[i].textContent = originalTexts[i];
       }
 
       ellipsis(selector, rows, { ...options, responsive: false });
