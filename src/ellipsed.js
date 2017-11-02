@@ -76,15 +76,22 @@ function ellipsis(selector = '', rows = 1, options = {}) {
       for (let i = 0; i < elements.length; i++) {
         elements[i].textContent = originalTexts[i];
       }
-
       ellipsis(selector, rows, { ...options, responsive: false });
     };
 
-    window.addEventListener('resize', () => {
+    const resizeListener = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resizeHandler, opts.debounceDelay);
-    });
+    };
+
+    window.addEventListener('resize', resizeListener);
+
+    return resizeListener;
   }
 }
 
-export { ellipsis };
+function disableResponsive(listener) {
+  window.removeEventListener('resize', listener);
+}
+
+export { disableResponsive, ellipsis };
