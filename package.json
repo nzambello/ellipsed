@@ -23,7 +23,7 @@
   "scripts": {
     "build": "babel src -d lib && yarn prettier-all",
     "watch": "babel src -d lib --watch",
-    "start": "serve . -p 3000",
+    "start": "serve . -p 3000 -o",
     "prettier-all": "prettier --write '**/*.{js,json,css}'",
     "precommit": "lint-staged"
   },
