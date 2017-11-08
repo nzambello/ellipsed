@@ -1,6 +1,17 @@
 var ellipsis = window.ellipsed.ellipsis;
 var disableResponsive = window.ellipsed.disableResponsive;
 
+var globalState = {
+  lastEllipsis: null,
+};
+
+function setLastEllipsis(state, lastEllipsis) {
+  if (typeof lastEllipsis !== 'number' || !state) {
+    return;
+  }
+  state.lastEllipsis = lastEllipsis;
+}
+
 function getReplaceStr() {
   return document.querySelector('.replace-str-input').value;
 }
@@ -14,9 +25,11 @@ var resizeListenerLorem;
 
 function ellipsize(rows) {
   reset(resizeListenerAaa, resizeListenerLorem);
+  var replaceStr = getReplaceStr();
   var responsive = getResponsive();
-  resizeListenerAaa = ellipsis('.text p.aaa', rows, { replaceStr: getReplaceStr(), responsive: responsive });
-  resizeListenerLorem = ellipsis('.text p.lorem-ipsum', rows, { replaceStr: getReplaceStr(), responsive: responsive });
+  resizeListenerAaa = ellipsis('.text p.aaa', rows, { replaceStr: replaceStr, responsive: responsive });
+  resizeListenerLorem = ellipsis('.text p.lorem-ipsum', rows, { replaceStr: replaceStr, responsive: responsive });
+  setLastEllipsis(globalState, rows);
 }
 
 function clearEllipsis(resizeListenerAaa, resizeListenerLorem) {
@@ -65,7 +78,7 @@ function fiveRows() {
 }
 document.getElementById('five-rows').addEventListener('click', fiveRows);
 
-function responsiveListener(ev) {
-  !ev.currentTarget.checked && clearEllipsis(resizeListenerAaa, resizeListenerLorem);
+function responsiveListener() {
+  ellipsize(globalState.lastEllipsis);
 }
 document.getElementById('responsive-input').addEventListener('change', responsiveListener);
