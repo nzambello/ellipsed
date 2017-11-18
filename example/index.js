@@ -6,10 +6,9 @@ var globalState = {
 };
 
 function setLastEllipsis(state, lastEllipsis) {
-  if (typeof lastEllipsis !== 'number' || !state) {
-    return;
+  if (typeof lastEllipsis == 'number' && state) {
+    state.lastEllipsis = lastEllipsis;
   }
-  state.lastEllipsis = lastEllipsis;
 }
 
 function getReplaceStr() {
@@ -51,34 +50,26 @@ function reset(resizeListenerAaa, resizeListenerLorem) {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
   clearEllipsis(resizeListenerAaa, resizeListenerLorem);
+  globalState.lastEllipsis = null;
 }
 
-function oneRow() {
-  ellipsize(1);
-}
-document.getElementById('one-row').addEventListener('click', oneRow);
+document.querySelector('.controls').addEventListener('click', function(e) {
+  if (e.target.tagName.toLowerCase() == 'button') {
+    var row = Number(e.target.getAttribute('data-row'));
+    if (row) {
+      ellipsize(row);
+    }
+  }
+});
 
-function twoRows() {
-  ellipsize(2);
-}
-document.getElementById('two-rows').addEventListener('click', twoRows);
+document.getElementById('responsive-input').addEventListener('change', function() {
+  if (globalState.lastEllipsis) {
+    ellipsize(globalState.lastEllipsis);
+  }
+});
 
-function threeRows() {
-  ellipsize(3);
-}
-document.getElementById('three-rows').addEventListener('click', threeRows);
-
-function fourRows() {
-  ellipsize(4);
-}
-document.getElementById('four-rows').addEventListener('click', fourRows);
-
-function fiveRows() {
-  ellipsize(5);
-}
-document.getElementById('five-rows').addEventListener('click', fiveRows);
-
-function responsiveListener() {
-  ellipsize(globalState.lastEllipsis);
-}
-document.getElementById('responsive-input').addEventListener('change', responsiveListener);
+document.querySelector('.replace-str-input').addEventListener('input', function() {
+  if (globalState.lastEllipsis) {
+    ellipsize(globalState.lastEllipsis);
+  }
+});
