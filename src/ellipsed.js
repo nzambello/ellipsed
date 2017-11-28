@@ -52,21 +52,23 @@ function ellipsis(selector = '', rows = 1, options = {}) {
   const originalTexts = [];
 
   for (let i = 0; i < elements.length; i++) {
-    const el = elements[i];
-    originalTexts[i] = el.textContent;
-    const splittedText = el.textContent.split(' ');
+    window.setTimeout(() => {
+      const el = elements[i];
+      originalTexts[i] = el.textContent;
+      const splittedText = el.textContent.split(' ');
 
-    el.textContent = '';
-    const elStyle = window.getComputedStyle(el);
+      el.textContent = '';
+      const elStyle = window.getComputedStyle(el);
 
-    splittedText.reduce(tokensReducer, {
-      el,
-      elStyle,
-      elHeight: 0,
-      rowsLimit: rows,
-      rowsWrapped: 0,
-      options: opts,
-    });
+      splittedText.reduce(tokensReducer, {
+        el,
+        elStyle,
+        elHeight: 0,
+        rowsLimit: rows,
+        rowsWrapped: 0,
+        options: opts,
+      });
+    }, 0);
   }
 
   if (opts.responsive) {
