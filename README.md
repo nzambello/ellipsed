@@ -45,6 +45,8 @@ ellipsis(selector, rows, options);
 - `selector` - A CSS selector string used to target the element for truncation
 - `rows` - An integer value used as the number of rows that should be visible, following words will be trucated with the `replaceStr` (default is `'...'`).
 - `options` - Allows an options object to be passed to further customise the functionality. See options section below for details.
+  
+If `responsive` option is set, the function returns the ID of the listener returned by `setTimeout`. It can be useful to clear resize handler timeout.
 
 ### Options
 Options can be passed through the method using the third parameter, which provides greater control.
