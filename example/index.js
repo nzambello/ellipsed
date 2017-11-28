@@ -23,9 +23,15 @@ var resizeListenerAaa;
 var resizeListenerLorem;
 
 function ellipsize(rows) {
-  reset(resizeListenerAaa, resizeListenerLorem);
+  if (rows === null) {
+    return;
+  }
+
   var replaceStr = getReplaceStr();
   var responsive = getResponsive();
+
+  reset(resizeListenerAaa, resizeListenerLorem);
+
   resizeListenerAaa = ellipsis('.text p.aaa', rows, { replaceStr: replaceStr, responsive: responsive });
   resizeListenerLorem = ellipsis('.text p.lorem-ipsum', rows, { replaceStr: replaceStr, responsive: responsive });
   setLastEllipsis(globalState, rows);
