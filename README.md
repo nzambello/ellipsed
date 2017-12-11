@@ -1,3 +1,7 @@
+<div style="text-align: center">
+  <img style="max-height: 10em;" src="https://github.com/nzambello/ellipsed/blob/master/logo.svg" alt="ellipsed logo" />
+</div>
+
 # ellipsed
 
 [![license](https://img.shields.io/github/license/nzambello/ellipsed.svg)](https://github.com/nzambello/ellipsed/blob/master/LICENSE)&nbsp;&nbsp;

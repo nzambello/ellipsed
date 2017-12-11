@@ -9,8 +9,12 @@ body {
   overflow: auto;
 }
 
-h1 {
+.header-title {
   text-align: center;
+}
+
+.header-title img {
+  max-height: 100px;
 }
 
 .text p {
@@ -20,7 +24,7 @@ h1 {
 }
 
 .tests {
-  margin: 50px auto;
+  margin: 50px auto 20px;
   float: left;
   width: 50%;
   box-sizing: border-box;
@@ -72,7 +76,7 @@ h1 {
 
 .view-on-github {
   text-align: center;
-  margin-top: 50px;
+  margin: 20px 0 40px;
 }
 
 .view-on-github a,
@@ -88,4 +92,16 @@ h1 {
   position: relative;
   top: 4px;
   left: -2px;
+}
+
+@media (max-width: 600px) {
+  .tests,
+  .controls {
+    width: 100%;
+    float: none;
+  }
+
+  .controls {
+    margin: 0;
+  }
 }
