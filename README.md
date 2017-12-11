@@ -1,8 +1,4 @@
-<div style="text-align: center">
-  <img style="margin-left: calc(50% - 75px); max-width: 150px;" src="https://github.com/nzambello/ellipsed/blob/master/logo.svg" alt="ellipsed logo" />
-</div>
-
-# ellipsed
+[![Ellipsed](https://github.com/nzambello/ellipsed/blob/master/logo.svg)](https://nzambello.github.io/ellipsed/)
 
 [![license](https://img.shields.io/github/license/nzambello/ellipsed.svg)](https://github.com/nzambello/ellipsed/blob/master/LICENSE)&nbsp;&nbsp;
 [![GitHub forks](https://img.shields.io/github/forks/nzambello/ellipsed.svg?style=social&label=Fork)](https://github.com/nzambello/ellipsed)
