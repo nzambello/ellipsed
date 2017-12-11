@@ -1,5 +1,5 @@
 <div style="text-align: center">
-  <img style="max-height: 10em;" src="https://github.com/nzambello/ellipsed/blob/master/logo.svg" alt="ellipsed logo" />
+  <img style="margin-left: calc(50% - 75px); max-width: 150px;" src="https://github.com/nzambello/ellipsed/blob/master/logo.svg" alt="ellipsed logo" />
 </div>
 
 # ellipsed
