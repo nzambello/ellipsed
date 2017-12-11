@@ -92,3 +92,5 @@ The library has been tested on:
  
 ## Contributing
 New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other information.
+  
+Many thanks to [@nekorina](https://github.com/nekorina) for project's logo.
