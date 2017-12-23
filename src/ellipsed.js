@@ -16,8 +16,8 @@ function tokensReducer(acc, token) {
   const textBeforeWrap = el.textContent;
   let newRowsWrapped = rowsWrapped;
   let newHeight = elHeight;
-  el.textContent = el.textContent.length
-    ? `${el.textContent} ${token}${options.replaceStr}`
+  el.innerHTML = el.innerHTML.length
+    ? `${el.innerHTML} ${token}${options.replaceStr}`
     : `${token}${options.replaceStr}`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
@@ -74,7 +74,7 @@ function ellipsis(selector = '', rows = 1, options = {}) {
 
     const resizeHandler = () => {
       for (let i = 0; i < elements.length; i++) {
-        elements[i].textContent = originalTexts[i];
+        elements[i].innerHTML = originalTexts[i];
       }
       ellipsis(selector, rows, { ...options, responsive: false });
     };
