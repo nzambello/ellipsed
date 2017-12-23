@@ -53,10 +53,10 @@ function ellipsis(selector = '', rows = 1, options = {}) {
 
   for (let i = 0; i < elements.length; i++) {
     const el = elements[i];
-    originalTexts[i] = el.textContent;
-    const splittedText = el.textContent.split(' ');
+    originalTexts[i] = el.innerHTML;
+    const splittedText = el.innerHTML.split(' ');
 
-    el.textContent = '';
+    el.innerHTML = '';
     const elStyle = window.getComputedStyle(el);
 
     splittedText.reduce(tokensReducer, {
