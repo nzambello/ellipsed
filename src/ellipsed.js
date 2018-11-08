@@ -17,7 +17,7 @@ function tokensReducer(acc, token) {
   let newRowsWrapped = rowsWrapped;
   let newHeight = elHeight;
   el.innerHTML = el.innerHTML.length
-    ? `${el.innerHTML} ${token}${options.replaceStr}`
+    ? `${el.innerHTML}${options.delimiter}${token}${options.replaceStr}`
     : `${token}${options.replaceStr}`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
@@ -34,7 +34,7 @@ function tokensReducer(acc, token) {
     }
   }
 
-  el.textContent = textBeforeWrap.length ? `${textBeforeWrap} ${token}` : `${token}`;
+  el.textContent = textBeforeWrap.length ? `${textBeforeWrap}${options.delimiter}${token}` : `${token}`;
 
   return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
 }
@@ -44,6 +44,7 @@ function ellipsis(selector = '', rows = 1, options = {}) {
     replaceStr: '...',
     responsive: false,
     debounceDelay: 250,
+    delimiter: ' ',
   };
 
   const opts = { ...defaultOptions, ...options };
@@ -54,7 +55,7 @@ function ellipsis(selector = '', rows = 1, options = {}) {
   for (let i = 0; i < elements.length; i++) {
     const el = elements[i];
     originalTexts[i] = el.innerHTML;
-    const splittedText = el.innerHTML.split(' ');
+    const splittedText = el.innerHTML.split(opts.delimiter);
 
     el.innerHTML = '';
     const elStyle = window.getComputedStyle(el);
