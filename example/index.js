@@ -19,8 +19,8 @@ function getResponsive() {
   return document.querySelector('input#responsive-input').checked;
 }
 
-var resizeListenerAaa;
-var resizeListenerLorem;
+const NUMBER_OF_EXAMPLE = 4;
+var resizeListenerList = new Array(NUMBER_OF_EXAMPLE);
 
 function ellipsize(rows) {
   if (rows === null) {
@@ -30,24 +30,37 @@ function ellipsize(rows) {
   var replaceStr = getReplaceStr();
   var responsive = getResponsive();
 
-  reset(resizeListenerAaa, resizeListenerLorem);
+  reset(resizeListenerList);
 
-  resizeListenerAaa = ellipsis('.text p.aaa', rows, { replaceStr: replaceStr, responsive: responsive });
-  resizeListenerLorem = ellipsis('.text p.lorem-ipsum', rows, { replaceStr: replaceStr, responsive: responsive });
+  resizeListenerList[0] = ellipsis('.text p.aaa', rows, { replaceStr: replaceStr, responsive: responsive });
+  resizeListenerList[1] = ellipsis('.text p.lorem-ipsum', rows, { replaceStr: replaceStr, responsive: responsive });
+  resizeListenerList[2] = ellipsis('.text p.jp', rows, {
+    replaceStr: replaceStr,
+    responsive: responsive,
+    delimiter: '', // CJK text should be split character by character
+  });
+  resizeListenerList[3] = ellipsis('.text p.long-word', rows, {
+    replaceStr: replaceStr,
+    responsive: responsive,
+    delimiter: '', // text contains long word should be split character by character
+  });
   setLastEllipsis(globalState, rows);
 }
 
-function clearEllipsis(resizeListenerAaa, resizeListenerLorem) {
-  if (typeof resizeListenerAaa !== 'undefined' && typeof resizeListenerLorem !== 'undefined') {
-    disableResponsive(resizeListenerAaa);
-    disableResponsive(resizeListenerLorem);
+function clearEllipsis(resizeListenerList) {
+  if (resizeListenerList.every(resizeListener => typeof resizeListener !== 'undefined')) {
+    resizeListenerList.forEach(listener => {
+      disableResponsive(listener);
+    });
   }
 }
 
-function reset(resizeListenerAaa, resizeListenerLorem) {
+function reset(resizeListenerList) {
   var elements = document.querySelectorAll('.text p');
   var aaa = elements[0];
   var loremIpsum = elements[1];
+  var jp = elements[2];
+  var longWord = elements[3];
 
   aaa.innerHTML =
     'A a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a';
@@ -55,7 +68,13 @@ function reset(resizeListenerAaa, resizeListenerLorem) {
   loremIpsum.innerHTML =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>It works with formatted content, too.</strong> Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
-  clearEllipsis(resizeListenerAaa, resizeListenerLorem);
+  jp.innerHTML =
+    '皮肉にも、捜索のきっかけとなった海王星の軌道の摂動の原因となるには、<strong>冥王星</strong>はあまりにも小さすぎた。19世紀に天文学者が観測した海王星の軌道の計算との食い違いは、海王星の質量の見積もりが正確でなかったためのものだった。いったんそれが分かると、冥王星が非常に暗く、望遠鏡で円盤状に見えないことから、冥王星はローウェルの考えた惑星Xであるという考えに疑問の目が向けられた。ローウェルは1915年に惑星Xの位置を予測しており、これは当時の冥王星の実際の位置にかなり近かった。しかし、アーネスト・ウィリアム・ブラウンはほとんど即座にこれは偶然の一致だと結論付け、この見方は今日でも支持されている。従って、冥王星がピッカリング、ローウェル、ケタカルの予測した領域の近くにあったことがただの偶然に過ぎないことを考慮すると、トンボーが冥王星を発見したことはさらに驚くべきことになる。';
+
+  longWord.innerHTML =
+    'Methionyl​threonyl​threonyl​glutaminyl​alanyl​prolyl​threonyl​phenyl​alanyl​threonyl​glutaminyl​prolyl​leucyl​glutaminyl​seryl​valyl​valyl​valyl​leucyl​glutamyl​glycyl​seryl​threonyl​alanyl​threonyl​phenyl​alanyl​glutamyl​alanyl​histidyl​isoleucyl​seryl​glycyl​phenyl​alanyl​prolyl​valyl​prolyl​glutamyl​valyl​seryl​tryptophyl​phenyl​alanyl​arginyl​aspartyl​glycyl​glutaminyl​valyl​isoleucyl​seryl​threonyl​seryl​threonyl​leucyl​prolyl​glycyl​valyl​glutaminyl​isoleucyl​seryl​phenyl​alanyl​seryl​aspartyl​glycyl​arginyl​alanyl​lysyl​leucyl​threonyl​isoleucyl​prolyl​alanyl​valyl​threonyl​lysyl​alanyl​asparaginyl​seryl​glycyl​arginyl​tyrosyl​seryl​leucyl​lysyl​alanyl​threonyl​asparaginyl​glycyl​seryl​glycyl​glutaminyl​alanyl​threonyl​seryl​threonyl​alanyl​glutamyl​leucyl​leucyl​valyl​lysyl​alanyl​glutamyl​threonyl​alanyl​prolyl​prolyl​asparaginyl​phenyl​alanyl​valyl​glutaminyl​arginyl​leucyl​glutaminyl​seryl​methionyl​threonyl​valyl​arginyl​glutaminyl​glycyl​seryl​glutaminyl​valyl​arginyl​leucyl​';
+
+  clearEllipsis(resizeListenerList);
   globalState.lastEllipsis = null;
 }
 
