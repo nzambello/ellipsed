@@ -56,7 +56,7 @@ Name | Type |  Default | Description
 replaceStr | string | `'...'` | The string that substituted following the trucated string.
 responsive | boolean | `false` | If true, the method is re-called on resize event, so the number of rows is preserved.
 debounceDelay | integer | `250` | If `responsive` option is set, it's the delay value for resizing events debouncing.
-delimiter | string | ' ' | Use '' for text written in languages such as Japanese, Chinese, etc. since there's usually no space break in such languages; or for text contains long word (word that is longer than the width of the container).
+delimiter | string | `' '` | Use '' for text written in languages such as Japanese, Chinese, etc. since there's usually no space break in such languages; or for text contains long word (word that is longer than the width of the container).
 
 ### Import
 Ellipsed is provided as a UMD module.
