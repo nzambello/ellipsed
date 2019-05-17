@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) 2017  Nicola Zambello
+ *   Copyright (C) 2017 Nicola Zambello
  *
  *    The JavaScript code in this page is open source software licensed under MIT license
  *    References about this code and its license, see:
@@ -10,14 +10,17 @@
 
 function tokensReducer(acc, token) {
   const { el, elStyle, elHeight, rowsLimit, rowsWrapped, options } = acc;
+  let oldBuffer = acc.buffer;
+  let newBuffer = oldBuffer;
+
   if (rowsWrapped === rowsLimit + 1) {
     return { ...acc };
   }
-  const textBeforeWrap = el.textContent;
+  const textBeforeWrap = oldBuffer;
   let newRowsWrapped = rowsWrapped;
   let newHeight = elHeight;
-  el.innerHTML = el.innerHTML.length
-    ? `${el.innerHTML}${options.delimiter}${token}${options.replaceStr}`
+  el.innerHTML = newBuffer = oldBuffer.length
+    ? `${oldBuffer}${options.delimiter}${token}${options.replaceStr}`
     : `${token}${options.replaceStr}`;
 
   if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
@@ -25,7 +28,7 @@ function tokensReducer(acc, token) {
     newHeight = elStyle.height;
 
     if (newRowsWrapped === rowsLimit + 1) {
-      el.innerHTML =
+      el.innerHTML = newBuffer =
         textBeforeWrap[textBeforeWrap.length - 1] === '.' && options.replaceStr === '...'
           ? `${textBeforeWrap}..`
           : `${textBeforeWrap}${options.replaceStr}`;
@@ -34,9 +37,9 @@ function tokensReducer(acc, token) {
     }
   }
 
-  el.textContent = textBeforeWrap.length ? `${textBeforeWrap}${options.delimiter}${token}` : `${token}`;
+  el.innerHTML = newBuffer = textBeforeWrap.length ? `${textBeforeWrap}${options.delimiter}${token}` : `${token}`;
 
-  return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
+  return { ...acc, buffer: newBuffer, elHeight: newHeight, rowsWrapped: newRowsWrapped };
 }
 
 function ellipsis(selector = '', rows = 1, options = {}) {
@@ -62,6 +65,7 @@ function ellipsis(selector = '', rows = 1, options = {}) {
 
     splittedText.reduce(tokensReducer, {
       el,
+      buffer: el.innerHTML,
       elStyle,
       elHeight: 0,
       rowsLimit: rows,
