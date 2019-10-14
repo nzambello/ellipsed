@@ -82,6 +82,12 @@ Or as a global module in the browser:
 var ellipsis = window.ellipsed.ellipsis;
 ```
 
+## Performance
+
+It seems that having multiple calls of ellipsis with `responsive` option enabled would add multiple event listeners and would be recommended to use a single call with a multiple selector.
+A single event listener should be more efficient and events handling more fluid.
+
+
 ## Browser support
 The library has been tested on:
 
