@@ -18,12 +18,12 @@
     "husky": "^3.0.5",
     "lint-staged": "^9.3.0",
     "prettier": "^1.18.2",
-    "serve": "^11.1.0"
+    "serve": "^11.2.0"
   },
   "scripts": {
     "build": "babel src -d lib && yarn prettier-all",
     "watch": "babel src -d lib --watch",
-    "start": "serve . -p 3000 -o",
+    "start": "serve -p 3000 .",
     "prettier-all": "prettier --write '**/*.{js,json,css}'",
     "precommit": "lint-staged"
   },
