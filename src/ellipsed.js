@@ -76,12 +76,18 @@ function ellipsis(selector = '', rows = 1, options = {}) {
 
   if (opts.responsive) {
     let resizeTimeout = false;
+    let last_window_w = window.innerWidth;
 
     const resizeHandler = () => {
-      for (let i = 0; i < elements.length; i++) {
-        elements[i].innerHTML = originalTexts[i];
+      if (window.innerWidth !== last_window_w) {
+        last_window_w = window.innerWidth;
+
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].innerHTML = originalTexts[i];
+        }
+
+        ellipsis(selector, rows, { ...options, responsive: false });
       }
-      ellipsis(selector, rows, { ...options, responsive: false });
     };
 
     const resizeListener = () => {
