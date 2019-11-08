@@ -18,7 +18,7 @@ function ellipsed(selector = '', rows = 1) {
    *    through which recipients can access the Corresponding Source.
    */
 
-  const elements = document.querySelectorAll(selector);
+  const elements = selector instanceof Element ? selector : document.querySelectorAll(selector);
 
   for (const el of elements) {
     const splittedText = el.textContent.split(' ');
