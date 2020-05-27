@@ -6,5 +6,8 @@
         "modules": "umd"
       }
     ]
+  ],
+  "plugins": [
+    "transform-object-rest-spread"
   ]
 }
