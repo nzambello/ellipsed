@@ -53,9 +53,12 @@ function ellipsis(selector = '', rows = 1, options = {}) {
   const opts = { ...defaultOptions, ...options };
 
   const elements =
-    selector && (selector instanceof NodeList || selector.nodeType === 1)
+    selector &&
+    (selector instanceof NodeList
       ? selector
-      : document.querySelectorAll(selector);
+      : selector.nodeType === 1
+      ? [selector] // return array if it is a single node
+      : document.querySelectorAll(selector));
 
   const originalTexts = [];
 

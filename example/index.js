@@ -44,7 +44,7 @@ function ellipsize(rows) {
     responsive: responsive,
     delimiter: '', // text contains long word should be split character by character
   });
-  resizeListenerList[4] = ellipsis(document.querySelectorAll('.text-root p'), rows, {
+  resizeListenerList[4] = ellipsis(document.querySelector('.text-root p'), rows, {
     replaceStr: replaceStr,
     responsive: responsive,
     delimiter: '', // CJK text should be split character by character
@@ -67,7 +67,7 @@ function reset(resizeListenerList) {
   var loremIpsum = elements[1];
   var jp = elements[2];
   var longWord = elements[3];
-  var textNode = document.querySelectorAll('.text-root p');
+  var textNode = document.querySelector('.text-root p');
 
   aaa.innerHTML =
     'A a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a';
