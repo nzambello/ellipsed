@@ -1,60 +1,112 @@
-function ellipsed(selector = '', rows = 1) {
-  /*   Copyright (C) 2017  Nicola Zambello
-   *
-   *    https://github.com/nzambello/ellipsed
-   *
-   *    The JavaScript code in this page is free software: you can
-   *    redistribute it and/or modify it under the terms of the GNU
-   *    General Public License (GNU GPL) as published by the Free Software
-   *    Foundation, either version 3 of the License, or (at your option)
-   *    any later version.  The code is distributed WITHOUT ANY WARRANTY;
-   *    without even the implied warranty of MERCHANTABILITY or FITNESS
-   *    FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-   *
-   *    As additional permission under GNU GPL version 3 section 7, you
-   *    may distribute non-source (e.g., minimized or compacted) forms of
-   *    that code without the copy of the GNU GPL normally required by
-   *    section 4, provided you include this license notice and a URL
-   *    through which recipients can access the Corresponding Source.
-   */
+/*
+ *   Copyright (C) 2017 Nicola Zambello
+ *
+ *    The JavaScript code in this page is open source software licensed under MIT license
+ *    References about this code and its license, see:
+ *
+ *    https://github.com/nzambello/ellipsed
+ *
+ */
 
-  const elements = (selector && (selector instanceof NodeList || selector.nodeType === 1)) ? selector : document.querySelectorAll(selector);
+function tokensReducer(acc, token) {
+  const { el, elStyle, elHeight, rowsLimit, rowsWrapped, options } = acc;
+  let oldBuffer = acc.buffer;
+  let newBuffer = oldBuffer;
 
-  for (const el of elements) {
-    const splittedText = el.textContent.split(' ');
-    let rowsWrapped = 0;
-    let textBeforeWrap = '';
+  if (rowsWrapped === rowsLimit + 1) {
+    return { ...acc };
+  }
+  const textBeforeWrap = oldBuffer;
+  let newRowsWrapped = rowsWrapped;
+  let newHeight = elHeight;
+  el.innerHTML = newBuffer = oldBuffer.length
+    ? `${oldBuffer}${options.delimiter}${token}${options.replaceStr}`
+    : `${token}${options.replaceStr}`;
 
-    el.textContent = '';
-    const elStyle = window.getComputedStyle(el);
-    let elHeight = elStyle.height;
+  if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
+    newRowsWrapped++;
+    newHeight = elStyle.height;
 
-    for (const token of splittedText) {
-      if (el.textContent.length) {
-        el.textContent = `${el.textContent} ${token}...`;
-      } else {
-        el.textContent = `${el.textContent}${token}...`;
-      }
+    if (newRowsWrapped === rowsLimit + 1) {
+      el.innerHTML = newBuffer =
+        textBeforeWrap[textBeforeWrap.length - 1] === '.' && options.replaceStr === '...'
+          ? `${textBeforeWrap}..`
+          : `${textBeforeWrap}${options.replaceStr}`;
 
-      if (parseFloat(elStyle.height) > parseFloat(elHeight)) {
-        elHeight = elStyle.height;
-        rowsWrapped++;
-
-        if (rowsWrapped === rows + 1) {
-          el.innerHTML = textBeforeWrap[textBeforeWrap.length - 1] === '.'
-            ? `${textBeforeWrap}..`
-            : `${textBeforeWrap}...`;
-
-          break;
-        }
-      }
-
-      textBeforeWrap = textBeforeWrap.length
-        ? `${textBeforeWrap} ${token}`
-        : `${textBeforeWrap}${token}`;
-      el.textContent = textBeforeWrap;
+      return { ...acc, elHeight: newHeight, rowsWrapped: newRowsWrapped };
     }
+  }
+
+  el.innerHTML = newBuffer = textBeforeWrap.length ? `${textBeforeWrap}${options.delimiter}${token}` : `${token}`;
+
+  return { ...acc, buffer: newBuffer, elHeight: newHeight, rowsWrapped: newRowsWrapped };
+}
+
+function ellipsis(selector = '', rows = 1, options = {}) {
+  const defaultOptions = {
+    replaceStr: '...',
+    responsive: false,
+    debounceDelay: 250,
+    delimiter: ' ',
+  };
+
+  const opts = { ...defaultOptions, ...options };
+
+  const elements =
+    selector && (selector instanceof NodeList || selector.nodeType === 1)
+      ? selector
+      : document.querySelectorAll(selector);
+
+  const originalTexts = [];
+
+  for (let i = 0; i < elements.length; i++) {
+    const el = elements[i];
+    originalTexts[i] = el.innerHTML;
+    const splittedText = el.innerHTML.split(opts.delimiter);
+
+    el.innerHTML = '';
+    const elStyle = window.getComputedStyle(el);
+
+    splittedText.reduce(tokensReducer, {
+      el,
+      buffer: el.innerHTML,
+      elStyle,
+      elHeight: 0,
+      rowsLimit: rows,
+      rowsWrapped: 0,
+      options: opts,
+    });
+  }
+
+  if (opts.responsive) {
+    let resizeTimeout = false;
+    let last_window_w = window.innerWidth;
+
+    const resizeHandler = () => {
+      if (window.innerWidth !== last_window_w) {
+        last_window_w = window.innerWidth;
+
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].innerHTML = originalTexts[i];
+        }
+
+        ellipsis(selector, rows, { ...options, responsive: false });
+      }
+    };
+
+    const resizeListener = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resizeHandler, opts.debounceDelay);
+    };
+
+    window.addEventListener('resize', resizeListener);
+
+    return resizeListener;
   }
 }
 
-export default ellipsed;
+function disableResponsive(listener) {
+  window.removeEventListener('resize', listener);
+}
+
+export { disableResponsive, ellipsis };

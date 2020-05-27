@@ -1,8 +1,8 @@
 {
   "name": "ellipsed",
-  "version": "0.2.4",
+  "version": "1.4.2",
   "description": "A JavaScript library for multilined text ellipsis",
-  "licence": "MIT",
+  "license": "MIT",
   "homepage": "https://nzambello.github.io/ellipsed/",
   "repository": {
     "type": "git",
@@ -11,13 +11,26 @@
   "main": "lib/ellipsed.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "eslint": "^4.6.1",
-    "serve": "^6.0.6"
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.3.0",
+    "prettier": "^1.18.2",
+    "serve": "^11.2.0"
   },
   "scripts": {
-    "build": "babel src -d lib",
+    "build": "babel src -d lib && yarn prettier-all",
     "watch": "babel src -d lib --watch",
-    "start": "serve . -p 3000"
+    "start": "serve -p 3000 .",
+    "prettier-all": "prettier --write '**/*.{js,json,css}'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

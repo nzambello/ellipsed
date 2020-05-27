@@ -1,42 +1,103 @@
-# ellipsed
+[![Ellipsed](https://github.com/nzambello/ellipsed/raw/master/logo.svg?sanitize=true)](https://nzambello.github.io/ellipsed/)
+
 [![license](https://img.shields.io/github/license/nzambello/ellipsed.svg)](https://github.com/nzambello/ellipsed/blob/master/LICENSE)&nbsp;&nbsp;
 [![GitHub forks](https://img.shields.io/github/forks/nzambello/ellipsed.svg?style=social&label=Fork)](https://github.com/nzambello/ellipsed)
 [![GitHub stars](https://img.shields.io/github/stars/nzambello/ellipsed.svg?style=social&label=Star)](https://github.com/nzambello/ellipsed)  
 [![npm version](https://badge.fury.io/js/ellipsed.svg)](https://www.npmjs.com/package/ellipsed)
 [![npm](https://img.shields.io/npm/dt/ellipsed.svg)](https://www.npmjs.com/package/ellipsed)
-[![npm](https://img.shields.io/npm/dw/ellipsed.svg)](https://www.npmjs.com/package/ellipsed) &nbsp;
-[![Demo](https://img.shields.io/badge/Demo-here-yellowgreen.svg)](https://nzambello.github.io/ellipsed/)  
+[![compatibility](https://img.shields.io/badge/compatibility-tested-brightgreen.svg?style=flat)](https://github.com/nzambello/ellipsed/issues)
   
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/nzambello/ellipsed/issues)
+[![Join the chat at https://gitter.im/ellipsed/Lobby](https://badges.gitter.im/ellipsed/Lobby.svg)](https://gitter.im/ellipsed/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) &nbsp;
+[![Demo](https://img.shields.io/badge/Demo-here-yellowgreen.svg)](https://nzambello.github.io/ellipsed/)
   
-A JavaScript library for multilined ellipsis  
-  
-  
-### Usage
-It provides a function that is defined as:
-`ellipsed(selector, rows);`
 
-*selector* is a CSS selector string and *rows* is the number of rows should be visible.
-Words those exceede that number of rows are trucated with `...` at the end.  
+## What is Ellipsed?
+Ellipsed is a JavaScript library for generating multi-lined ellipsed text.  
+Indicating the number of visible lines, it will truncate the text at the correct position in targeted elements.
+  
+![Example screenshot](https://github.com/nzambello/ellipsed/blob/master/example/ellipsed.png)
+
+## Demo  
+You can see the demo here: https://nzambello.github.io/ellipsed/
+
+The [example/](https://github.com/nzambello/ellipsed/tree/master/example) directory of this repo contains the demo showed above.
+To start it on your local machine, clone the repository and install it by following the installation instructions below, then start it with `npm start` (or with `yarn start`).  
 
 ## Install
-Ellipsed is published via npm, so you can install it with:
-```
+```sh
+# Yarn
 yarn add ellipsed
-```
-or, if using npm: ``` npm install ellipsed ```  
-  
-It's published also via bower:
-```
+
+# NPM
+npm install --save ellipsed
+
+# Bower
 bower install ellipsed
 ```
-  
-  
-## Demo  
-In the [example/](https://github.com/nzambello/ellipsed/tree/master/example) directory of this repo there is an example.
-You can start it with `npm start` (or with `yarn start`).  
-The main template is in the root directory with the library and other stuffs are in the example/ directory.
 
-You can also see the example here: https://nzambello.github.io/ellipsed/
+## Usage
+Call the ellipsis method with three parameters:
+````javascript
+ellipsis(selector, rows, options);
+````
 
-## Contributing &nbsp; [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/nzambello/ellipsed/issues)
-New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other infos.
+- `selector` - A CSS selector string used to target the element for truncation
+- `rows` - An integer value used as the number of rows that should be visible, following words will be trucated with the `replaceStr` (default is `'...'`).
+- `options` - Allows an options object to be passed to further customise the functionality. See options section below for details.
+  
+If `responsive` option is set, the function returns the ID of the listener returned by `setTimeout`. It can be useful to clear resize handler timeout.
+
+### Options
+Options can be passed through the method using the third parameter, which provides greater control.
+
+Name | Type |  Default | Description
+---- | ---- |  ------- | -----------
+replaceStr | string | `'...'` | The string that substituted following the trucated string.
+responsive | boolean | `false` | If true, the method is re-called on resize event, so the number of rows is preserved.
+debounceDelay | integer | `250` | If `responsive` option is set, it's the delay value for resizing events debouncing.
+delimiter | string | `' '` | Use '' for text written in languages such as Japanese, Chinese, etc. since there's usually no space break in such languages; or for text contains long word (word that is longer than the width of the container).
+
+### Import
+Ellipsed is provided as a UMD module.
+
+You can use it as a ES6 module:
+```javascript
+import { ellipsis } from 'ellipsed';
+```
+As a CommonJS module:
+```javascript
+var { ellipsis } = require('ellipsed');
+```
+As an AMD module:
+```javascript
+require([
+  'ellipsed'
+], function(ellipsed) {
+  var ellipsis = ellipsed.ellipsis;
+});
+```
+Or as a global module in the browser:
+```javascript
+var ellipsis = window.ellipsed.ellipsis;
+```
+
+## Performance
+
+It seems that having multiple calls of ellipsis with `responsive` option enabled would add multiple event listeners and would be recommended to use a single call with a multiple selector.
+A single event listener should be more efficient and events handling more fluid.
+
+
+## Browser support
+The library has been tested on:
+
+- Google Chrome 60+
+- Firefox 55+
+- Safari 10+
+- Edge 14+
+- IE 9+
+ 
+## Contributing
+New contributors are warmly welcome, see the [CONTRIBUTING.md](https://github.com/nzambello/ellipsed/blob/master/CONTRIBUTING.md) file for other information.
+  
+Many thanks to [@nekorina](https://github.com/nekorina) for project's logo.
