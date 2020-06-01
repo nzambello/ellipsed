@@ -52,7 +52,14 @@ function ellipsis(selector = '', rows = 1, options = {}) {
 
   const opts = { ...defaultOptions, ...options };
 
-  const elements = document.querySelectorAll(selector);
+  const elements =
+    selector &&
+    (selector instanceof NodeList
+      ? selector
+      : selector.nodeType === 1 //if node type is Node.ELEMENT_NODE
+      ? [selector] // wrap it in (NodeList) if it is a single node
+      : document.querySelectorAll(selector));
+
   const originalTexts = [];
 
   for (let i = 0; i < elements.length; i++) {

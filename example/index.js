@@ -44,6 +44,12 @@ function ellipsize(rows) {
     responsive: responsive,
     delimiter: '', // text contains long word should be split character by character
   });
+  resizeListenerList[4] = ellipsis(document.querySelector('.text-root p'), rows, {
+    replaceStr: replaceStr,
+    responsive: responsive,
+    delimiter: '', // CJK text should be split character by character
+  });
+
   setLastEllipsis(globalState, rows);
 }
 
@@ -61,6 +67,7 @@ function reset(resizeListenerList) {
   var loremIpsum = elements[1];
   var jp = elements[2];
   var longWord = elements[3];
+  var textNode = document.querySelector('.text-root p');
 
   aaa.innerHTML =
     'A a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a';
@@ -73,6 +80,16 @@ function reset(resizeListenerList) {
 
   longWord.innerHTML =
     'Methionyl​threonyl​threonyl​glutaminyl​alanyl​prolyl​threonyl​phenyl​alanyl​threonyl​glutaminyl​prolyl​leucyl​glutaminyl​seryl​valyl​valyl​valyl​leucyl​glutamyl​glycyl​seryl​threonyl​alanyl​threonyl​phenyl​alanyl​glutamyl​alanyl​histidyl​isoleucyl​seryl​glycyl​phenyl​alanyl​prolyl​valyl​prolyl​glutamyl​valyl​seryl​tryptophyl​phenyl​alanyl​arginyl​aspartyl​glycyl​glutaminyl​valyl​isoleucyl​seryl​threonyl​seryl​threonyl​leucyl​prolyl​glycyl​valyl​glutaminyl​isoleucyl​seryl​phenyl​alanyl​seryl​aspartyl​glycyl​arginyl​alanyl​lysyl​leucyl​threonyl​isoleucyl​prolyl​alanyl​valyl​threonyl​lysyl​alanyl​asparaginyl​seryl​glycyl​arginyl​tyrosyl​seryl​leucyl​lysyl​alanyl​threonyl​asparaginyl​glycyl​seryl​glycyl​glutaminyl​alanyl​threonyl​seryl​threonyl​alanyl​glutamyl​leucyl​leucyl​valyl​lysyl​alanyl​glutamyl​threonyl​alanyl​prolyl​prolyl​asparaginyl​phenyl​alanyl​valyl​glutaminyl​arginyl​leucyl​glutaminyl​seryl​methionyl​threonyl​valyl​arginyl​glutaminyl​glycyl​seryl​glutaminyl​valyl​arginyl​leucyl​';
+
+  if (textNode.length) {
+    [...textNode].map(text => {
+      text.innerHTML =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    });
+  } else {
+    textNode.innerHTML =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Pellentesque in ipsum id orci porta dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor lectus nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+  }
 
   clearEllipsis(resizeListenerList);
   globalState.lastEllipsis = null;
