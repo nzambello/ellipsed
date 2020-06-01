@@ -42,7 +42,7 @@ Call the ellipsis method with three parameters:
 ellipsis(selector, rows, options);
 ````
 
-- `selector` - A CSS selector string used to target the element for truncation
+- `selector` - A CSS selector string or the DOM Node or Node List used to target the element for truncation
 - `rows` - An integer value used as the number of rows that should be visible, following words will be trucated with the `replaceStr` (default is `'...'`).
 - `options` - Allows an options object to be passed to further customise the functionality. See options section below for details.
   
