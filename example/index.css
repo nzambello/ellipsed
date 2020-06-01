@@ -17,7 +17,8 @@ body {
   max-height: 100px;
 }
 
-.text p {
+.text p,
+.text-root p {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
