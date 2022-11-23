@@ -1,6 +1,6 @@
 {
   "name": "ellipsed",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "A JavaScript library for multilined text ellipsis",
   "license": "MIT",
   "homepage": "https://nzambello.github.io/ellipsed/",
